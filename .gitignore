@@ -5,3 +5,10 @@ target/
 *.iml
 # macOS
 .DS_Store
+# Maven build folder
+target/
+# IntelliJ IDEA
+.idea/
+*.iml
+# macOS
+.DS_Store
