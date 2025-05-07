@@ -1,49 +1,61 @@
 # User Stories – UnempX
 
-Dieses Dokument enthält die User Stories für das UnempX-Projekt. Die Stories beschreiben die Anforderungen aus Sicht des Nutzers und dienen als Basis für Entwicklung und Tests.
+Dieses Dokument enthält die **User Stories** für das UnempX-Projekt, einer Anwendung zur Analyse von **US-Arbeitslosenquoten** zwischen den Jahren **2015** und **2024**. Die zugrundeliegenden Daten stammen aus dem Bureau of Labor Statistics Public Data Query (PDQ) System (https://data.bls.gov/pdq/SurveyOutputServlet). Sie beschreiben die Anforderungen aus Sicht der Anwender und dienen als Grundlage für die Umsetzung.
 
 ---
 
-## Story 1: CSV-Import
-**Als** Anwender  
-**möchte ich** die Arbeitslosenquoten aus einer CSV-Datei importieren können  
-**um** sie in der Anwendung zu analysieren und in Diagrammen darzustellen.
+### Story 1: CSV-Import
+**Als** Anwender der Arbeitslosendaten
+**möchte ich** historische Arbeitslosenquoten aus einer vorgegebenen CSV-Datei importieren können
+**um** die Daten im Programm zu visualisieren und Trends der Arbeitslosigkeit darzustellen.
 
-## Story 2: Übersicht der Datensätze
-**Als** Anwender  
-**möchte ich** alle importierten Einträge in einer Tabelle sehen können  
-**um** zu überprüfen, dass die Daten korrekt geladen wurden.
+---
 
-## Story 3: Neuer Datensatz
-**Als** Anwender  
-**möchte ich** manuell einen neuen Eintrag (Datensatz) hinzufügen können  
-**um** fehlende Werte direkt in der GUI zu ergänzen.
+### Story 2: Übersicht der Datensätze
+**Als** Anwender
+**möchte ich** alle importierten Datensätze mit Jahres- und Monatsquoten in einer Tabelle sehen können
+**um** schnell zu überprüfen, ob die Arbeitslosenquoten korrekt geladen wurden.
 
-## Story 4: Datensatz bearbeiten
-**Als** Anwender  
-**möchte ich** einen bestehenden Eintrag bearbeiten können  
-**um** Tippfehler oder falsche Werte zu korrigieren.
+---
 
-## Story 5: Datensatz löschen
-**Als** Anwender  
-**möchte ich** einen Eintrag aus der Tabelle löschen können  
-**um** veraltete oder fehlerhafte Datensätze zu entfernen.
+### Story 3: Neuer Datensatz hinzufügen
+**Als** Anwender
+**möchte ich** manuell einen neuen Jahresdatensatz mit zwölf Monatsquoten hinzufügen können
+**um** Lücken in der Arbeitslosenstatistik direkt in der Anwendung zu schließen.
 
-## Story 6: Statistische Auswertung
-**Als** Anwender  
-**möchte ich** Statistiken (Minimum, Maximum, Durchschnitt) über die Arbeitslosenquoten erhalten  
-**um** die Entwicklung der Arbeitslosigkeit besser zu verstehen.
+---
 
-## Story 7: Diagrammanzeige
-**Als** Anwender  
-**möchte ich** die Arbeitslosenquoten in einem Liniendiagramm sehen können  
-**um** Trends und Ausreißer visuell zu identifizieren.
+### Story 4: Datensatz bearbeiten
+**Als** Anwender
+**möchte ich** einen bestehenden Datensatz bearbeiten können
+**um** Tippfehler oder fehlerhafte Monatswerte in den Arbeitslosenquoten zu korrigieren.
 
-## Story 8: Änderungen speichern
-**Als** Anwender  
-**möchte ich** alle vorgenommenen Änderungen (Hinzufügen, Bearbeiten, Löschen) in einer CSV-Datei speichern können  
-**um** die aktualisierten Daten dauerhaft zu sichern.
+---
 
-## User Stories
+### Story 5: Datensatz löschen
+**Als** Anwender
+**möchte ich** einen gesamten Jahresdatensatz aus der Tabelle entfernen können
+**um** veraltete oder unbrauchbare Arbeitslosenquoten zu löschen.
 
-Siehe [USER_STORIES.md](USER_STORIES.md) für die vollständigen Anforderungen als User Stories.
+---
+
+### Story 6: Statistische Auswertung anzeigen
+**Als** Anwender
+**möchte ich** Minimum, Maximum und Durchschnitt der Arbeitslosenquoten berechnet sehen
+**um** zentrale Kennzahlen zur Entwicklung der Arbeitslosigkeit auf einen Blick zu erhalten.
+
+---
+
+### Story 7: Liniendiagramm der Quoten
+**Als** Anwender
+**möchte ich** Jahres- und Monatsquoten in einem interaktiven Liniendiagramm darstellen
+**um** Ausreißer und saisonale Muster der Arbeitslosentwicklung visuell zu identifizieren.
+
+---
+
+### Story 8: Änderungen persistent speichern
+**Als** Anwender
+**möchte ich** alle vorgenommenen Änderungen (Import, Hinzufügen, Bearbeiten, Löschen) automatisch in einer externen CSV-Datei speichern
+**um** nach einem Neustart die aktuellen Arbeitslosenquoten unverändert wiederverwenden zu können.
+
+---
