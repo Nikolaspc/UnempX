@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class UnempXApp extends JFrame {
     private DataProcessor processor;
@@ -214,7 +215,57 @@ public class UnempXApp extends JFrame {
         }
     }
 
+    // ======= NUEVO MÉTODO DE DEMO CONSOLA =======
+    public static void mainConsoleDemo(String[] args) {
+        System.out.println("== UnempX Console Demo ==");
+        if (args.length < 1) {
+            System.out.println("Please provide the path to the CSV file as argument.");
+            return;
+        }
+        String csvFilePath = args[0];
+
+        try {
+            List<UnemploymentRecord> data = new CsvReader().readData();
+            DataProcessor service = new DataProcessor(data);
+            double average = data.stream()
+                    .mapToDouble(UnemploymentRecord::getAnnualAverage)
+                    .average()
+                    .orElse(0.0);
+            System.out.printf("Average unemployment (annual): %.2f\n", average);
+
+            var minmax = service.getMinMax();
+            System.out.printf("Min value: %.2f in year %d\n",
+                    minmax.get("minValue"), minmax.get("minYear"));
+            System.out.printf("Max value: %.2f in year %d\n",
+                    minmax.get("maxValue"), minmax.get("maxYear"));
+
+            Scanner sc = new Scanner(System.in);
+            System.out.print("¿Deseas agregar un año? (y/n): ");
+            if (sc.nextLine().trim().equalsIgnoreCase("y")) {
+                System.out.print("Año: ");
+                int year = Integer.parseInt(sc.nextLine());
+                List<Double> rates = new ArrayList<>();
+                String[] months = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+                for (String m : months) {
+                    System.out.print(m + ": ");
+                    rates.add(Double.parseDouble(sc.nextLine().replace(",", ".")));
+                }
+                data.add(new UnemploymentRecord(year, rates));
+                new CsvWriter().writeData(data);
+                System.out.println("¡Guardado!");
+            }
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }
+
+    // ======= AJUSTE EN MAIN =======
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new UnempXApp().setVisible(true));
+        // Si el primer argumento es "--console", ejecuta demo consola
+        if (args.length > 0 && args[0].equals("--console")) {
+            mainConsoleDemo(args.length > 1 ? new String[]{args[1]} : new String[0]);
+        } else {
+            SwingUtilities.invokeLater(() -> new UnempXApp().setVisible(true));
+        }
     }
 }
